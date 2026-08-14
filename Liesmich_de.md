@@ -142,10 +142,3 @@ Bezeichner englisch, Kommentare und Oberfläche deutsch. Kommentare erklären
 das Warum, nicht das Was — in normalem Deutsch, ohne Fachjargon und ohne
 Umlaute im Quelltext (ae/oe/ue).
 
-## Offene Punkte
-
-- Windows-Fassung: `flutter_pcsc` unterstützt womöglich kein Windows. Dann
-  wäre eine eigene Anbindung über FFI/WinSCard nötig, als Weiche im
-  NFC-Service.
-- `artikel_tab.dart` ist mit rund 1500 Zeilen die größte Datei; ließe sich in
-  Felder, Prüfungen und Bilder aufteilen.

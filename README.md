@@ -142,10 +142,3 @@ Identifiers in English, comments and interface in German. Comments explain the
 why, not the what — in plain German, without jargon and without umlauts in the
 source code (ae/oe/ue).
 
-## Open points
-
-- Windows version: `flutter_pcsc` may not support Windows. In that case a
-  separate binding via FFI/WinSCard would be needed, as a branch in the NFC
-  service.
-- `artikel_tab.dart` is the largest file at around 1500 lines; it could be
-  split into fields, inspections and pictures.
