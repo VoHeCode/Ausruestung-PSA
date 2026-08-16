@@ -35,6 +35,12 @@ Inspections go with the item when it is deleted, by way of
 the interface. Pictures are stored as BLOBs in the database and are passed to
 the outside as Base64 text.
 
+Deleting does not actually remove anything: the `deleted` column marks the
+record, the picture is cleared, and of the inspections the latest one remains.
+That way the number stays taken — otherwise some other item would eventually
+carry the same identifier as an old printout. The interface hides marked
+records; the menu can write them out as CSV.
+
 ## Multi-client
 
 Every client has its own folder:
@@ -56,14 +62,54 @@ opened — identifiable by `last_access` in the respective `config.ini`.
   retirement date is calculated from the purchase date and the service life —
   unless it is entered by hand.
 - Pictures are not loaded together with the list; instead they are fetched for
-  the displayed record after a short pause.
+  the displayed record individually. Afterwards `ImageService` tidies up: too
+  large ones are scaled down, old PNGs converted to JPEG, and written back
+  only when something actually changed. The stock thus converts itself while
+  browsing; transparent areas become white.
 - NFC runs via `nfc_manager` on Android and via a PC/SC reader on the desktop.
   Both listen continuously; the interface notices no difference. A scan enters
   the serial number if the cursor is in the empty serial number field —
   otherwise the matching item is searched for.
 - PDF in two forms: one sheet per item, or one packing list per storage
-  location.
+  location. In the packing list, sets with the same name can be grouped under
+  one heading — each part then shows a single picture.
 - Import replaces existing records, migration skips them.
+- The interface offers light, dark and "follow the system"; the setting lives
+  per client in `config.ini`.
+- Part, inspections, pictures and the further item fields can be collapsed.
+  The state survives a restart.
+
+## Translation
+
+Following the gettext pattern: the German text stays in the source and is the
+key at the same time. Every file carries its own line for this:
+
+```dart
+String ttt(String text, [Map<String, Object?> werte = const {}]) =>
+    Translate.ttt(text, werte);
+```
+
+Below it the same line sits commented out, returning the text unchanged.
+Whoever does not want the translation deletes the import and swaps the comment
+markers — the application keeps running, in the language of the source.
+
+Placeholders are written in braces: `ttt('Kunde: {kunde}', {'kunde': name})`.
+Never `$name` inside the text — Dart substitutes that before the call, and the
+text can no longer be found. If a placeholder is missing from a translation,
+it is still shown and `|missing {name}` is appended.
+
+`main.dart` is the only file that knows `translate.dart` by name: `ttt`,
+`sprachenLaden`, `spracheSetzen`, `uebersetzungVorbereiten` and `potErzeugen`
+sit together there, each with a replacement line beside it. The `makePot`
+switch writes the template `translate/translator.pot` on startup and then
+quits. Translation is done with Poedit; the `.po` files live in
+`assets/translate/`, including the one for the source language.
+
+Field labels exist in one place only: `feldName()` in `ui_helpers.dart`, keyed
+by the database column. Tabs, search list and PDF all take them from there —
+so a field is called the same everywhere and there is one entry per field to
+translate. The services receive `feldName` as a parameter; they do not know
+the interface.
 
 ## Logging
 
@@ -71,6 +117,15 @@ opened — identifiable by `last_access` in the respective `config.ini`.
 `logError(what, error)` writes the full message to the log and returns a short
 sentence for display. Nothing goes to the snackbar only. The debug tab shows
 the log and can be switched on in the Options.
+
+Every entry carries its kind (`LogArt`): error, warning, success, notice.
+Filtering and the leading symbol happen there, not in the display — the debug
+tab merely passes the chosen kind through.
+
+Whatever is caught nowhere else also ends up in the log: `main.dart` sets
+`FlutterError.onError` and `PlatformDispatcher.instance.onError`. Writing
+happens only after the frame is done, otherwise waking the debug tab triggers
+the next error.
 
 ## Files
 
@@ -92,6 +147,7 @@ the log and can be switched on in the Options.
 | `ui_helpers.dart` | shared building blocks of the interface |
 | `migration_dialog.dart` | merging clients |
 | `pruefung_historie.dart` | older inspections on a page of their own |
+| `translate.dart` | translation and generating the `.pot` |
 
 `lib/services/`
 
@@ -117,6 +173,27 @@ the log and can be switched on in the Options.
 | `utils.dart` | sorting, paths, file names, backup ZIP |
 
 Plus `pubspec.yaml` and `build-appimage.sh`.
+
+## Names and identifiers
+
+Window title, app name and application identifier do not live in
+`pubspec.yaml` but scattered across the target platform folders — and
+`flutter create` overwrites them. Affected are:
+
+| What | Where |
+| --- | --- |
+| Display name Android | `android:label` in `AndroidManifest.xml` |
+| Identifier | `applicationId` and `namespace` in `build.gradle.kts` |
+| Signature | `signingConfig` in the `release` block, same file |
+| Binary name Linux | `BINARY_NAME` in `linux/CMakeLists.txt` |
+| Window title Linux | `gtk_window_set_title` in `my_application.cc` |
+
+The binary name tolerates neither spaces nor umlauts; the display name does.
+Without an entry at `signingConfig` the APK stays unsigned and cannot be
+installed.
+
+A separate tool (ProjektSettings) reads these values from a `projektsettings`
+section in `pubspec.yaml` and distributes them.
 
 ## Building
 

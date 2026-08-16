@@ -25,7 +25,7 @@ sich nicht ändern.
 | Artikel | ein Artikel mit seinen Feldern, dem zugehörigen Teil, der aktuellen Prüfung und den Bildern |
 | Teile | ein Teil mit seinen Feldern und dem Bild |
 | Suche | Suche über Artikel, Teile und Prüfungen |
-| Optionen | Benutzer, Kunden, Datumsformat, Sichtbarkeiten |
+| Optionen | Benutzer, Sprache, Kunden, Aussehen, Datumsformat, Sichtbarkeiten |
 | Info | Plattform, Ablageorte, Datenbestand, Lizenzen |
 | Debug | Protokoll (nur wenn in den Optionen eingeschaltet) |
 
@@ -40,6 +40,25 @@ sich nicht ändern.
 
 Gespeichert wird, sobald ein Feld verlassen wird. Es gibt keinen
 Speichern-Knopf.
+
+## Ansicht anpassen
+
+Die kleinen Dreiecke am linken Rand klappen Bereiche zu: die Teilangaben, die
+weiteren Artikelfelder, die Prüfungen und die Bilder. Zugeklappt bleibt jeweils
+die erste Zeile stehen, damit man sieht, worum es geht. Auf dem Telefon lohnt
+sich das — was gerade nicht gebraucht wird, verschwindet, und der Rest passt
+auf den Schirm.
+
+Der Zustand bleibt erhalten, auch nach dem Beenden.
+
+## Sprache und Aussehen
+
+In den Optionen stehen zwei Auswahlfelder:
+
+**Sprache** listet die vorhandenen Übersetzungen. Steht dort nur „default",
+gibt es keine — dann erscheint alles so, wie es im Programm steht.
+
+**Farbschema**: hell, dunkel oder wie das System. Beides gilt je Kunde.
 
 ## Blättern
 
@@ -139,6 +158,10 @@ im Teilen-Dialog des Systems (dort steckt „Speichern unter" darin).
 - **Lagerliste**: statt eines Blattes je Artikel eine Packliste je Lagerort;
   dort lassen sich einzelne Orte ankreuzen. Die Sortierung entfällt, die
   Liste ordnet nach Ort, Set und Teil.
+- **Gleiche Sets zusammenfassen** (nur bei der Lagerliste): Sets mit gleichem
+  Namen kommen unter eine Überschrift, und je Teil erscheint nur ein Bild
+  statt eines je Artikel. Das spart erheblich Platz — aus acht Seiten werden
+  leicht zwei.
 
 ## Wenn etwas klemmt
 
@@ -152,5 +175,16 @@ Zustand von NFC.
 ## Löschen
 
 Die Löschen-Schaltflächen für Artikel und Teile sind zunächst ausgeblendet und
-lassen sich in den Optionen einschalten. Dort steht auch das Zurücksetzen der
-Datenbank — beides ohne Rückweg.
+lassen sich in den Optionen einschalten.
+
+Was beim Löschen geschieht: der Datensatz verschwindet aus der Anzeige, bleibt
+aber in der Datenbank stehen — nur markiert, ohne Bild, und von den Prüfungen
+bleibt die letzte. Der Grund ist die Nummer: würde sie wieder frei, trüge
+irgendwann ein anderer Artikel dieselbe Kennung wie auf einem alten Ausdruck.
+
+Nachsehen lässt sich das über **Gelöschte exportieren (CSV)** im Menü — zwei
+Dateien, eine für Artikel, eine für Teile. Der Eintrag erscheint nur bei
+eingeschaltetem Entwicklermodus.
+
+Das Zurücksetzen der Datenbank in den Optionen löscht dagegen wirklich, ohne
+Rückweg.

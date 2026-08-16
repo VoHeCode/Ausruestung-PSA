@@ -25,7 +25,7 @@ cannot be changed.
 | Items | one item with its fields, the associated part, the current inspection and the pictures |
 | Parts | one part with its fields and the picture |
 | Search | search across items, parts and inspections |
-| Options | users, clients, date format, visibility settings |
+| Options | users, language, clients, appearance, date format, visibility settings |
 | Info | platform, storage locations, data holdings, licences |
 | Debug | log (only if switched on in the Options) |
 
@@ -39,6 +39,25 @@ cannot be changed.
 3. Add purchase date, service life, storage location and serial number.
 
 Saving happens as soon as a field is left. There is no Save button.
+
+## Adjusting the view
+
+The small triangles along the left edge collapse sections: the part details,
+the further item fields, the inspections and the pictures. Collapsed, the
+first line of each stays visible so you can see what it is about. On a phone
+this pays off — whatever is not needed disappears and the rest fits on the
+screen.
+
+The state is kept, even after quitting.
+
+## Language and appearance
+
+Two dropdowns sit in the Options:
+
+**Language** lists the available translations. If only "default" is offered
+there are none — everything then appears as written in the program.
+
+**Colour scheme**: light, dark, or follow the system. Both apply per client.
 
 ## Paging
 
@@ -137,6 +156,9 @@ in the system's share dialog (where "Save as" is one of the entries).
 - **Storage list**: instead of one sheet per item, one packing list per storage
   location; individual locations can be ticked there. Sorting does not apply;
   the list is ordered by location, set and part.
+- **Group identical sets** (storage list only): sets with the same name go
+  under a single heading, and each part shows one picture instead of one per
+  item. This saves a great deal of space — eight pages easily become two.
 
 ## When something gets stuck
 
@@ -150,5 +172,17 @@ well as the state of NFC.
 ## Deleting
 
 The delete buttons for items and parts are hidden at first and can be switched
-on in the Options. That is also where the database reset is found — both are
-irreversible.
+on in the Options.
+
+What happens on deletion: the record disappears from the display but stays in
+the database — merely marked, without its picture, and of the inspections the
+latest one remains. The reason is the number: were it to become free again,
+some other item would eventually carry the same identifier as on an old
+printout.
+
+You can look them up via **Export deleted (CSV)** in the menu — two files, one
+for items, one for parts. The entry only appears with developer mode switched
+on.
+
+The database reset in the Options, by contrast, really does delete, with no
+way back.
