@@ -1,5 +1,7 @@
 # Ausrüstung — Bedienung
 
+![Startbildschirm](assets/App_splash.png)
+
 Verwaltung von Kletterausrüstung und PSA-Prüfungen: welches Teil, welcher
 Artikel, wann geprüft, wann abzulegen.
 
@@ -31,15 +33,35 @@ sich nicht ändern.
 
 ## Erste Schritte
 
-1. Im Reiter **Teile** auf *Neu* und die Bauart eintragen: Name, Hersteller,
-   Best.-Nr., Material, Normen. Die Nummer vergibt das Programm.
-2. Im Reiter **Artikel** auf *Neu*, in *Teilnummer* die Nummer des eben
-   angelegten Teils eintragen. Statt der Nummer geht auch der Teilname —
-   das Programm sucht ihn und trägt die Nummer ein.
-3. Kaufdatum, Nutzungsdauer, Lagerort und Seriennummer ergänzen.
+**1.** Im Reiter **Teile** auf *Neu* und die Bauart eintragen: Name,
+Hersteller, Best.-Nr., Material, Normen. Die Nummer vergibt das Programm.
+
+![Teile-Reiter](assets/App_Part.png)
+
+**2.** Im Reiter **Artikel** auf *Neu*, in *Teilnummer* die Nummer des eben
+angelegten Teils eintragen. Statt der Nummer geht auch der Teilname — das
+Programm sucht ihn und trägt die Nummer ein.
+
+**3.** Kaufdatum, Nutzungsdauer, Lagerort und Seriennummer ergänzen. Fertig
+sieht ein Artikel so aus: oben die Angaben des Teils, darunter die eigenen
+Felder, unten Bilder und QR-Code.
+
+![Artikel-Reiter](assets/App_Item.png)
 
 Gespeichert wird, sobald ein Feld verlassen wird. Es gibt keinen
 Speichern-Knopf.
+
+## Lagerort und Set
+
+Zwei Felder ordnen die Artikel, und beide sind frei benennbar.
+
+**Lagerort** sagt, wo das Stück liegt: „Kiste 1", aber ebenso „Mitarbeiter A"
+oder „OS-XX-123". So lässt sich verwalten, wer welche Ausrüstung bei sich hat
+oder was in welchem Fahrzeug liegt.
+
+**Im Set** fasst zusammen, was zusammengehört. Steht bei drei Artikeln
+„Expressen Set 1", so bilden sie ein Set — etwa zwei Karabiner und ein
+Expressband. Der Name ist frei; die Packliste ordnet danach.
 
 ## Ansicht anpassen
 
@@ -101,6 +123,8 @@ zum Artikel-Reiter.
 
 ## Prüfungen
 
+![Prüfung angelegt](assets/App_Added_Inspection.png)
+
 Im Artikel-Reiter steht nur die aktuelle Prüfung. *Neu* legt eine mit dem
 heutigen Datum an; ist in den Optionen ein Benutzername eingetragen, steht er
 in der Bemerkung. Gibt es ältere Prüfungen, führt *Historie* zu ihnen.
@@ -152,6 +176,9 @@ im Teilen-Dialog des Systems (dort steckt „Speichern unter" darin).
 
 **PDF exportieren** im Menü fragt nach:
 
+![PDF-Optionen](assets/App_PDF.png)
+
+
 - **Umfang**: der aktuelle Artikel, das Suchergebnis oder alles
 - **Sortierung**: zwei Stufen, die zweite greift bei Gleichstand
 - **Kompakt**: engere Abstände und kleinere Schrift, spart Seiten
@@ -162,6 +189,16 @@ im Teilen-Dialog des Systems (dort steckt „Speichern unter" darin).
   Namen kommen unter eine Überschrift, und je Teil erscheint nur ein Bild
   statt eines je Artikel. Das spart erheblich Platz — aus acht Seiten werden
   leicht zwei.
+
+Das Blatt je Artikel enthält alle Angaben, das Bild des Teils, den QR-Code und
+die Prüfungen:
+
+![Artikelblatt](assets/Volker_ITEM_74.png)
+
+Die Packliste ordnet nach Lagerort und Set — der Zettel für die Kiste, das
+Fahrzeug oder den Mitarbeiter:
+
+![Lagerliste](assets/Volkers_Storagelist.png)
 
 ## Wenn etwas klemmt
 

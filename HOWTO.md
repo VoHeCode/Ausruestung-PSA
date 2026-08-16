@@ -1,5 +1,7 @@
 # Equipment — User Guide
 
+![Splash screen](assets/App_splash.png)
+
 Management of climbing equipment and PPE inspections: which part, which item,
 inspected when, retired when.
 
@@ -31,14 +33,35 @@ cannot be changed.
 
 ## Getting started
 
-1. In the **Parts** tab click *New* and enter the model: name, manufacturer,
-   order no., material, standards. The number is assigned by the program.
-2. In the **Items** tab click *New* and enter the number of the part you have
-   just created in *Part number*. Instead of the number, the part name also
-   works — the program looks it up and fills in the number.
-3. Add purchase date, service life, storage location and serial number.
+**1.** In the **Parts** tab click *New* and enter the model: name,
+manufacturer, order no., material, standards. The number is assigned by the
+program.
+
+![Parts tab](assets/App_Part.png)
+
+**2.** In the **Items** tab click *New* and enter the number of the part you
+have just created in *Part number*. Instead of the number, the part name also
+works — the program looks it up and fills in the number.
+
+**3.** Add purchase date, service life, storage location and serial number.
+Finished, an item looks like this: the part's details at the top, its own
+fields below, pictures and QR code at the bottom.
+
+![Items tab](assets/App_Item.png)
 
 Saving happens as soon as a field is left. There is no Save button.
+
+## Storage location and set
+
+Two fields organise the items, and both can be named freely.
+
+**Storage location** says where the piece is kept: "Box 1", but equally
+"Employee A" or "OS-XX-123". This makes it possible to manage who has which
+equipment with them, or what is in which vehicle.
+
+**In set** groups what belongs together. If three items carry "Quickdraw set
+1", they form a set — say two carabiners and a sling. The name is free; the
+packing list is ordered by it.
 
 ## Adjusting the view
 
@@ -101,6 +124,8 @@ view switches to the Items tab.
 
 ## Inspections
 
+![Inspection added](assets/App_Added_Inspection.png)
+
 The Items tab shows only the current inspection. *New* creates one with
 today's date; if a user name is entered in the Options, it appears in the
 remark. If there are older inspections, *History* leads to them.
@@ -150,6 +175,9 @@ in the system's share dialog (where "Save as" is one of the entries).
 
 **Export PDF** in the menu asks for:
 
+![PDF options](assets/App_PDF.png)
+
+
 - **Scope**: the current item, the search result, or everything
 - **Sorting**: two levels, the second applies in the event of a tie
 - **Compact**: tighter spacing and smaller type, saves pages
@@ -159,6 +187,16 @@ in the system's share dialog (where "Save as" is one of the entries).
 - **Group identical sets** (storage list only): sets with the same name go
   under a single heading, and each part shows one picture instead of one per
   item. This saves a great deal of space — eight pages easily become two.
+
+The sheet per item carries all details, the picture of the part, the QR code
+and the inspections:
+
+![Item sheet](assets/Volker_ITEM_74.png)
+
+The packing list is ordered by storage location and set — the slip for the
+box, the vehicle or the employee:
+
+![Storage list](assets/Volkers_Storagelist.png)
 
 ## When something gets stuck
 
