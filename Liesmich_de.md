@@ -1,5 +1,7 @@
 # Ausruestung
 
+<img src="assets/App_splash.png" align="right" width="320">
+
 Flutter-Anwendung zur Verwaltung von Kletterausrüstung und PSA-Prüfungen.
 Zielplattformen sind Linux und Android; entwickelt wird unter Linux mit
 IntelliJ.

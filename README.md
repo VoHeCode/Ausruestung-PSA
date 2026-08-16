@@ -1,5 +1,7 @@
 # Ausruestung
 
+<img src="assets/App_splash.png" align="right" width="320">
+
 Flutter application for managing climbing equipment and PPE inspections.
 Target platforms are Linux and Android; development takes place on Linux with
 IntelliJ.
